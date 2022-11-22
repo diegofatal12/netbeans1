@@ -17,7 +17,9 @@ import persistencia.HibernateUtil;
  * @author Usuario
  */
 public class ClienteDao {
-    
+    /* 
+        vamos a salir adelante siempre
+    */
     public List<Cliente> getAll() {
         List<Cliente> clientes = null;
         //clientes.add(new Cliente(1, "Diego"));
