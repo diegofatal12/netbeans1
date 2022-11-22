@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 nov. 2022 18:59:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Cliente" table="cliente" catalog="puntoventa" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="45" />
+        </property>
+        <property name="dni" type="string">
+            <column name="dni" length="8" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="200" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="15" />
+        </property>
+        <property name="nota" type="string">
+            <column name="nota" length="45" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" length="45" />
+        </property>
+        <set name="direccions" cascade="all-delete-orphan" table="direccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcliente" />
+            </key>
+            <one-to-many class="modelo.Direccion" />
+        </set>
+        <set name="ventas" table="venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcliente" />
+            </key>
+            <one-to-many class="modelo.Venta" />
+        </set>
+    </class>
+</hibernate-mapping>
